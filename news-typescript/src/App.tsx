@@ -8,7 +8,14 @@ function App() {
   return (
     <div className={styles.main}>
       <SearchComponent/>
+      <div className={styles.posts}>
       <Post/>
+      <Post/>
+      <Post/>
+      <Post/>
+      <Post/>
+      </div>
+     
     </div>
   )
 }
