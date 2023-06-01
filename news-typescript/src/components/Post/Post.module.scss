@@ -3,6 +3,7 @@
     padding: 1em;
     width: 100%;
     margin-top: 5%;
+    margin-bottom: 2%;
     border-radius: 10px;
     a{
         text-decoration: none;
@@ -43,7 +44,9 @@
 .keyWordsList{
     margin-top: 1em;
     display: flex;
+    flex-wrap: wrap;
     h5{
+        margin-top: 1%;
         color:gray;
         border: 1px solid gray;
         margin-right: 1%;
@@ -51,4 +54,10 @@
         border-radius: 5px;
         cursor: pointer;
     }
+}
+
+.buttonLink{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1em;
 }

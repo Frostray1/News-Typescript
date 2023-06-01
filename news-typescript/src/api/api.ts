@@ -25,7 +25,8 @@ export const fetchData = async ({
 				...(category && { category })
 			}
 		});
-		return response.data.results;
+        console.log(response.data)
+		return response.data;
 	} catch (error) {
 		console.error(error);
 	}

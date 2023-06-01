@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styles from './Post.module.scss';
+import { Button } from 'antd';
 
 interface PropsPost {
 	category: string[];
@@ -43,6 +44,7 @@ const Post: FC<PropsPost> = ({
 					<h5 key={index}>{word}</h5>
 				))}
 			</div>
+			<a  className={styles.buttonLink} target = "_blank"  href={link}><Button>Читать полностью</Button></a>
 		</div>
 	);
 };

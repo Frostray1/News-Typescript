@@ -1,8 +1,14 @@
 .main{
     width: 100%;
     height: 100vh;
+    overflow: hidden;
+
 }
 .posts{
     height: 93%;
     overflow: auto;
+}
+.loader{
+    margin: 100px auto;
+    display: block;
 }

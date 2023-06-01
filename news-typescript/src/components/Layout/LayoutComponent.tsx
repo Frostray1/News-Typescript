@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import {
 	MenuFoldOutlined,
 	MenuUnfoldOutlined,
+	PicLeftOutlined,
 	UploadOutlined,
 	UserOutlined,
 	VideoCameraOutlined
@@ -9,6 +10,13 @@ import {
 import { Layout, Menu, Button, theme } from 'antd';
 import styles from './LayoutComponent.module.scss';
 import App from '../../App';
+import {GiSportMedal} from 'react-icons/gi'
+import {BsNewspaper} from 'react-icons/bs'
+import {MdOutlineFastfood} from 'react-icons/md'
+
+
+
+
 
 const { Sider } = Layout;
 interface LayoutComponentProps {
@@ -17,6 +25,10 @@ interface LayoutComponentProps {
 
 const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 	const [collapsed, setCollapsed] = useState(true);
+
+
+
+
 
 	return (
 		<Layout>
@@ -43,26 +55,26 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 						},
 						{
 							key: '1',
-							icon: <UserOutlined />,
-							label: 'Топ новостей'
+							icon: <BsNewspaper />,
+							label: 'Top News'
 						},
 						{
 							key: '2',
-							icon: <VideoCameraOutlined />,
-							label: 'Спортивные новости'
+							icon: <GiSportMedal/>,
+							label: 'Sport News'
 						},
 						{
 							key: '3',
-							icon: <UploadOutlined />,
-							label: 'Топ за месяц'
+							icon: <MdOutlineFastfood />,
+							label: 'Food News'
 						}
 					]}
 				/>
 			</Sider>
 			<Layout>
-        <div className={styles.container}>
-				<App/>
-        </div>
+				<div className={styles.container}>
+					<App />
+				</div>
 			</Layout>
 		</Layout>
 	);
