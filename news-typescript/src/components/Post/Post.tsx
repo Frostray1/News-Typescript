@@ -19,6 +19,8 @@ interface PropsPost {
 
 const Post: FC<PropsPost> = ({
 	category,
+	pubDate,
+	image_url,
 	content,
 	creator,
 	description,
@@ -28,11 +30,13 @@ const Post: FC<PropsPost> = ({
 }) => {
 	return (
 		<div className={styles.post}>
+			<img src={image_url} alt='' />
 			<a href={link}>
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			</a>
 			<h4>{creator ? `Author: ${creator}` : ''}</h4>
-			<h3 className={styles.description}>{description}</h3>
+			<h4>{pubDate}</h4>
+			<h3 className={styles.content}>{content ? '' : description}</h3>
 			<p className={styles.content}>{content}</p>
 			<div className={styles.keyWordsList}>
 				{keywords?.map((word, index) => (

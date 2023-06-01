@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import styles from './LayoutComponent.module.scss';
+import App from '../../App';
 
 const { Sider } = Layout;
 interface LayoutComponentProps {
@@ -60,7 +61,7 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 			</Sider>
 			<Layout>
         <div className={styles.container}>
-				{children}
+				<App/>
         </div>
 			</Layout>
 		</Layout>

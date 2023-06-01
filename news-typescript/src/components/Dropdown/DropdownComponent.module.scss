@@ -1,10 +1,15 @@
-.dropdown{
-    width: 100%;
+.dropdown {
+	width: 100%;
 }
-.overlay{
-  ul{
-    height: 20vh;
-    overflow: auto;
-  }
-   
+.overlay {
+	ul {
+		height: 20vh;
+		overflow: auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.dropdown {
+		margin: 0;
+	}
 }

@@ -1,6 +1,6 @@
-import { MenuProps } from "antd";
+import { MenuProps } from 'antd';
 
-export const items  = [
+export const items = [
 	{
 		label: 'Afghanistan',
 		key: 'af'
@@ -619,54 +619,364 @@ export const items  = [
 	}
 ];
 
-export const category=[
-  {
+export const category = [
+	{
 		key: 'business',
-    label: 'business',
+		label: 'Business'
 	},
-  {
+	{
 		key: 'entertainment',
-    label: 'entertainment',
+		label: 'Entertainment'
 	},
-  {
+	{
 		key: 'environment',
-    label: 'environment',
+		label: 'Environment'
 	},
-  {
+	{
 		key: 'food',
-    label: 'food'
+		label: 'Food'
 	},
-  {
+	{
 		key: 'health',
-    label: 'health'
+		label: 'Health'
 	},
-  {
+	{
 		key: 'politics',
-    label: 'politics'
+		label: 'Politics'
 	},
-  {
+	{
 		key: 'science',
-		label: 'science'
-
+		label: 'Science'
 	},
-  {
+	{
 		key: 'sports',
-		label: 'sports'
+		label: 'Sports'
 	},
-  {
+	{
 		key: 'technology',
-		label: 'technology'
+		label: 'Technology'
 	},
-  {
+	{
 		key: 'top',
-		label: 'top'
+		label: 'Top'
 	},
-  {
+	{
 		key: 'tourism',
-		label: 'tourism'
+		label: 'Tourism'
 	},
-  {
+	{
 		key: 'world',
-		label: 'world'
+		label: 'World'
+	}
+];
+
+export const lang = [
+	{
+		key: 'af',
+		label: 'Afrikaans'
 	},
-]
+	{
+		key: 'sq',
+		label: 'Albanian'
+	},
+	{
+		key: 'am',
+		label: 'Amharic'
+	},
+	{
+		key: 'ar',
+		label: 'Arabic'
+	},
+	{
+		key: 'as',
+		label: 'Assamese'
+	},
+	{
+		key: 'az',
+		label: 'Azerbaijani'
+	},
+	{
+		key: 'be',
+		label: 'Belarusian'
+	},
+	{
+		key: 'bn',
+		label: 'Bengali'
+	},
+	{
+		key: 'bs',
+		label: 'Bosnian'
+	},
+	{
+		key: 'bg',
+		label: 'Bulgarian'
+	},
+	{
+		key: 'my',
+		label: 'Burmese'
+	},
+	{
+		key: 'ca',
+		label: 'Catalan'
+	},
+	{
+		key: 'ckb',
+		label: 'Central Kurdish'
+	},
+	{
+		key: 'zh',
+		label: 'Chinese'
+	},
+	{
+		key: 'hr',
+		label: 'Croatian'
+	},
+	{
+		key: 'cs',
+		label: 'Czech'
+	},
+	{
+		key: 'da',
+		label: 'Danish'
+	},
+	{
+		key: 'nl',
+		label: 'Dutch'
+	},
+	{
+		key: 'en',
+		label: 'English'
+	},
+	{
+		key: 'et',
+		label: 'Estonian'
+	},
+	{
+		key: 'pi',
+		label: 'Filipino'
+	},
+	{
+		key: 'fi',
+		label: 'Finnish'
+	},
+	{
+		key: 'fr',
+		label: 'French'
+	},
+	{
+		key: 'ka',
+		label: 'Georgian'
+	},
+	{
+		key: 'de',
+		label: 'German'
+	},
+	{
+		key: 'el',
+		label: 'Greek'
+	},
+	{
+		key: 'gu',
+		label: 'Gujarati'
+	},
+	{
+		key: 'he',
+		label: 'Hebrew'
+	},
+	{
+		key: 'hi',
+		label: 'Hindi'
+	},
+	{
+		key: 'hu',
+		label: 'Hungarian'
+	},
+	{
+		key: 'is',
+		label: 'Icelandic'
+	},
+	{
+		key: 'id',
+		label: 'Indonesian'
+	},
+	{
+		key: 'it',
+		label: 'Italian'
+	},
+	{
+		key: 'jp',
+		label: 'Japanese'
+	},
+	{
+		key: 'kh',
+		label: 'Khmer'
+	},
+	{
+		key: 'rw',
+		label: 'Kinyarwanda'
+	},
+	{
+		key: 'ko',
+		label: 'Korean'
+	},
+	{
+		key: 'lv',
+		label: 'Latvian'
+	},
+	{
+		key: 'lt',
+		label: 'Lithuanian'
+	},
+	{
+		key: 'lb',
+		label: 'Luxembourgish'
+	},
+	{
+		key: 'mk',
+		label: 'Macedonian'
+	},
+	{
+		key: 'ms',
+		label: 'Malay'
+	},
+	{
+		key: 'ml',
+		label: 'Malayalam'
+	},
+	{
+		key: 'mt',
+		label: 'Maltese'
+	},
+	{
+		key: 'mi',
+		label: 'Maori'
+	},
+	{
+		key: 'mr',
+		label: 'Marathi'
+	},
+	{
+		key: 'mn',
+		label: 'Mongolian'
+	},
+	{
+		key: 'ne',
+		label: 'Nepali'
+	},
+	{
+		key: 'no',
+		label: 'Norwegian'
+	},
+	{
+		key: 'or',
+		label: 'Oriya'
+	},
+	{
+		key: 'ps',
+		label: 'Pashto'
+	},
+	{
+		key: 'fa',
+		label: 'Persian'
+	},
+	{
+		key: 'pl',
+		label: 'Polish'
+	},
+	{
+		key: 'pt',
+		label: 'Portuguese'
+	},
+	{
+		key: 'pa',
+		label: 'Punjabi'
+	},
+	{
+		key: 'ro',
+		label: 'Romanian'
+	},
+	{
+		key: 'ru',
+		label: 'Russian'
+	},
+	{
+		key: 'sm',
+		label: 'Samoan'
+	},
+	{
+		key: 'sr',
+		label: 'Serbian'
+	},
+	{
+		key: 'sn',
+		label: 'Shona'
+	},
+	{
+		key: 'si',
+		label: 'Sinhala'
+	},
+	{
+		key: 'sk',
+		label: 'Slovak'
+	},
+	{
+		key: 'sl',
+		label: 'Slovenian'
+	},
+	{
+		key: 'so',
+		label: 'Somali'
+	},
+	{
+		key: 'es',
+		label: 'Spanish'
+	},
+	{
+		key: 'sw',
+		label: 'Swahili'
+	},
+	{
+		key: 'sv',
+		label: 'Swedish'
+	},
+	{
+		key: 'tg',
+		label: 'Tajik'
+	},
+	{
+		key: 'ta',
+		label: 'Tamil'
+	},
+	{
+		key: 'te',
+		label: 'Telugu'
+	},
+	{
+		key: 'th',
+		label: 'Thai'
+	},
+	{
+		key: 'tr',
+		label: 'Turkish'
+	},
+	{
+		key: 'tk',
+		label: 'Turkmen'
+	},
+	{
+		key: 'uk',
+		label: 'Ukrainian'
+	},
+	{
+		key: 'ur',
+		label: 'Urdu'
+	},
+	{
+		key: 'uz',
+		label: 'Uzbek'
+	},
+	{
+		key: 'vi',
+		label: 'Vietnamese'
+	}
+];
