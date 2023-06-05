@@ -6,8 +6,8 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 const PaginationButton = () => {
   return (
     <div className={styles.paginationButtons}>
-        <Button><LeftOutlined /></Button>
-        <Button><RightOutlined /></Button>
+       
+        <Button>Показать еще</Button>
     </div>
   )
 }

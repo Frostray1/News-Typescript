@@ -3,8 +3,7 @@ import SearchComponent from './components/Filter/SearchComponent';
 import Post from './components/Post/Post';
 import { fetchData } from './api/api';
 import styles from './App.module.scss';
-import { Spin } from 'antd';
-import PaginationButton from './components/PaginationButton/PaginationButton';
+import { Button, Spin } from 'antd';
 
 interface NewsItem {
 	category: string[];
@@ -22,40 +21,58 @@ interface NewsItem {
 	video_url: null | string;
 }
 
-interface PaginationLink {
-	nextPage: string;
-	prevPage: string;
+interface SearchParams {
+	country: string;
+	category: string;
+	language: string;
 }
 
 function App() {
 	const [postList, setPostList] = useState<NewsItem[]>([]);
 	const [loading, setLoading] = useState<boolean>(false);
-	const [pagination, setPagination] = useState<PaginationLink[]>([]);
+	const [firstLoading, setFirstLoading] = useState<boolean>(true);
+
+	const [nextPageLink, setNextPageLink] = useState<string>('');
+	const [searchParams, setSearchParams] = useState<SearchParams>({
+		country: '',
+		category: '',
+		language: 'ru'
+	});
 
 	useEffect(() => {
 		setLoading(true);
 
-		// fetchData({ category: 'top' })
-		// 	.then(data => {
-		// 		setPagination(data);
-		// 		setPostList(data.results);
-		// 	})
-		// 	.catch(error => console.error('Error fetching data:', error))
-		// 	.finally(() => setLoading(false));
-	}, []);
+		fetchData({ ...searchParams })
+			.then(data => {
+				setPostList(data.results);
+				setNextPageLink(data.nextPage);
+				setFirstLoading(false);
+			})
+			.catch(error => console.error('Error fetching data:', error))
+			.finally(() => setLoading(false));
+	}, [searchParams]);
 
-	const handleSearch = async (selectedValues: {
-		country: string;
-		category: string;
-		language: string;
-	}) => {
+	const handleSearch = async (selectedValues: SearchParams) => {
+		try {
+			setFirstLoading(true);
+			setLoading(true);
+			setSearchParams(selectedValues);
+		} catch (error) {
+			console.error('Error fetching data:', error);
+			setLoading(false);
+		}
+	};
+
+	const downloadMorePosts = async (pageLink: string) => {
 		try {
 			setLoading(true);
-
-			// fetchData(selectedValues)
-			// 	.then(data => setPostList(data.results))
-			// 	.catch(error => console.error('Error fetching data:', error))
-			// 	.finally(() => setLoading(false));
+			fetchData({ ...searchParams, page: pageLink })
+				.then(data => {
+					setPostList(prevArray => [...prevArray, ...data.results]);
+					setNextPageLink(data.nextPage);
+				})
+				.catch(error => console.error('Error fetching data:', error))
+				.finally(() => setLoading(false));
 		} catch (error) {
 			console.error('Error fetching data:', error);
 			setLoading(false);
@@ -66,16 +83,33 @@ function App() {
 		<div className={styles.main}>
 			<SearchComponent onSearch={handleSearch} />
 			<div className={styles.posts}>
-				{loading ? (
-					<Spin className={styles.loader} size='large' />
+				{firstLoading ? (
+					loading ? (
+						<Spin className={styles.loader} size='large' />
+					) : (
+						<>
+							{postList.map((post, index) => (
+								<Post key={index} {...post} />
+							))}
+						</>
+					)
 				) : (
 					<>
-						<PaginationButton />
 						{postList.map((post, index) => (
 							<Post key={index} {...post} />
 						))}
-						<PaginationButton />
+						{loading && (
+							<Spin className={styles.loader} size='large' />
+						)}
 					</>
+				)}
+
+				{!loading && nextPageLink && (
+					<div className={styles.downloadMoreButton}>
+						<Button onClick={() => downloadMorePosts(nextPageLink)}>
+							Download more
+						</Button>
+					</div>
 				)}
 			</div>
 		</div>
