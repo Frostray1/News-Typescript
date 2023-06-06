@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import SearchComponent from './components/Filter/SearchComponent';
 import Post from './components/Post/Post';
 import { fetchData } from './api/api';
@@ -26,8 +26,11 @@ interface SearchParams {
 	category: string;
 	language: string;
 }
+interface AppProps {
+	menuCategory: SearchParams
+}
 
-function App() {
+const App: FC<AppProps> = ({ menuCategory }) => {
 	const [postList, setPostList] = useState<NewsItem[]>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [firstLoading, setFirstLoading] = useState<boolean>(true);
@@ -38,6 +41,11 @@ function App() {
 		category: '',
 		language: 'ru'
 	});
+	useEffect(() => {
+		setFirstLoading(true);
+		console.log(menuCategory);
+		setSearchParams(menuCategory)
+	}, [menuCategory]);
 
 	useEffect(() => {
 		setLoading(true);
@@ -114,6 +122,6 @@ function App() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default App;
