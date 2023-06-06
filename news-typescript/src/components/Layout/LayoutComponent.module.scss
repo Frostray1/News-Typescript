@@ -1,15 +1,42 @@
-.menu{
-    height: 100vh;
+.menu {
+	height: 100vh;
+	background: red;
+    
 }
 
-.menuList{
-    height: 100%;
+.menuList {
+	height: 100%;
 
-    padding-top: 7em;
-
+	padding-top: 7em;
 }
 
-.container{
-    width: 65%;
-    margin: 0 auto;
+.container {
+	width: 65%;
+	margin: 0 auto;
+}
+
+.darkMenuList {
+	@extend .menuList;
+	background: rgb(24, 24, 24);
+}
+
+
+
+.darkMode {
+	display: flex;
+	width: 40px;
+	height: 40px;
+	padding: 2px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50px;
+	font-size: 40px;
+	text-align: center;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+.layout {
+	background: rgb(63, 67, 70);
 }

@@ -7,6 +7,7 @@ import styles from './SearchComponent.module.scss';
 
 
 interface SearchComponentProps {
+  darkMode: boolean;
   onSearch: (selectedValues: {
 	q:string;
     country: string;
@@ -15,7 +16,7 @@ interface SearchComponentProps {
   }) => void;
 }
 
-const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
+const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch ,darkMode}) => {
   const [selectedValues, setSelectedValues] = useState({
 	q:'',
     country: '',
@@ -36,7 +37,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
   };
 
   return (
-    <div className={styles.SearchComponent}>
+    <div className={!darkMode? styles.darkSearchComponent: styles.SearchComponent}>
       <input type='text' onChange={event => handleDropdownChange('q', event.target.value)}/>
       <DropdownComponent
         type='Country'

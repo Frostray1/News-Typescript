@@ -12,7 +12,11 @@ import styles from './LayoutComponent.module.scss';
 import App from '../../App';
 import { GiSportMedal } from 'react-icons/gi';
 import { BsNewspaper } from 'react-icons/bs';
-import { MdOutlineFastfood } from 'react-icons/md';
+import {
+	MdOutlineFastfood,
+	MdDarkMode,
+	MdOutlineDarkMode
+} from 'react-icons/md';
 
 const { Sider } = Layout;
 interface LayoutComponentProps {
@@ -27,6 +31,8 @@ interface category {
 
 const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 	const [collapsed, setCollapsed] = useState(true);
+	const [darkMode, setDarkMode] = useState(true);
+
 	const [menuCategory, setMenuCategory] = useState<category>({
 		country: '',
 		category: '',
@@ -37,8 +43,13 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 		setMenuCategory({ country: '', category: key, language: '' });
 	};
 
+	const changeTheme = () => {
+		setDarkMode(!darkMode);
+		darkMode ? console.log('Ночной режим') : console.log('Дневной режим');
+	};
+
 	return (
-		<Layout>
+		<Layout >
 			<Sider
 				trigger={null}
 				collapsible
@@ -46,8 +57,9 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 				className={styles.menu}
 			>
 				<Menu
-					className={styles.menuList}
+					className={!darkMode ? styles.darkMenuList : styles.menuList}
 					mode='inline'
+					theme={`${!darkMode ? 'dark' :"light"}`}
 					defaultSelectedKeys={['0']}
 					items={[
 						{
@@ -57,7 +69,7 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 							) : (
 								<MenuFoldOutlined />
 							),
-							label: collapsed ? 'Открыть меню' : 'Закрыть меню',
+							label: collapsed ? 'Open menu' : 'Close menu',
 							onClick: () => setCollapsed(!collapsed)
 						},
 						{
@@ -81,9 +93,12 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 					]}
 				/>
 			</Sider>
-			<Layout>
+			<Layout className={!darkMode ? styles.layout : ''}>
 				<div className={styles.container}>
-					<App menuCategory={menuCategory}/>
+					<App menuCategory={menuCategory} darkMode={darkMode} />
+					<Button onClick={changeTheme} className={styles.darkMode}>
+						{darkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}
+					</Button>
 				</div>
 			</Layout>
 		</Layout>

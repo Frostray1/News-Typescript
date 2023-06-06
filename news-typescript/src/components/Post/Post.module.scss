@@ -1,63 +1,67 @@
-.post{
-    background:white;
-    padding: 1em;
-    width: 100%;
-    margin-top: 5%;
-    margin-bottom: 2%;
-    border-radius: 10px;
-    a{
-        text-decoration: none;
-        color:black;
-        font-size: 20px;
-        font-weight:bold;
-        
-    }
-    h4{
-        font-size: 12px;
-        margin-top: 1em;
-        color:gray
-    }
-    // h3{
-    //     margin-top: 1em;
-    // }
-    img{
-        display: block;
-        width: 100%;
-        border-radius:10px;
-        margin-bottom: 20px;
-    }
+.post {
+	background: white;
+	padding: 1em;
+	width: 100%;
+	margin-top: 5%;
+	margin-bottom: 2%;
+	border-radius: 10px;
+	a {
+		text-decoration: none;
+		color: black;
+		font-size: 20px;
+		font-weight: bold;
+	}
+	h4 {
+		font-size: 12px;
+		margin-top: 1em;
+		color: gray;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		border-radius: 10px;
+		margin-bottom: 20px;
+	}
 }
-.content{
-    margin-top: 1em;
-    font-weight:lighter;
-    font-size: 16px;
-    text-align: justify;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 15;
-    -webkit-box-orient: vertical;
-    line-height: 1.5em;
-    
+.content {
+	margin-top: 1em;
+	font-weight: lighter;
+	font-size: 16px;
+	text-align: justify;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 15;
+	-webkit-box-orient: vertical;
+	line-height: 1.5em;
 }
 
-
-.keyWordsList{
-    margin-top: 1em;
-    display: flex;
-    flex-wrap: wrap;
-    h5{
-        margin-top: 1%;
-        color:gray;
-        border: 1px solid gray;
-        margin-right: 1%;
-        padding: 0.5em;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+.keyWordsList {
+	margin-top: 1em;
+	display: flex;
+	flex-wrap: wrap;
+	h5 {
+		margin-top: 1%;
+		color: gray;
+		border: 1px solid gray;
+		margin-right: 1%;
+		padding: 0.5em;
+		border-radius: 5px;
+		cursor: pointer;
+	}
 }
 
-.buttonLink{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1em;
+.buttonLink {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 1em;
+}
+
+.darkPost {
+	@extend .post;
+	background: rgb(24, 24, 24);
+	color: white;
+	a {
+		color: white;
+	}
 }

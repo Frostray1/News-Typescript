@@ -16,6 +16,7 @@ interface PropsPost {
 	source_id: string;
 	title: string;
 	video_url: null | string;
+	darkMode: boolean;
 }
 
 const Post: FC<PropsPost> = ({
@@ -27,10 +28,11 @@ const Post: FC<PropsPost> = ({
 	description,
 	link,
 	title,
-	keywords
+	keywords,
+	darkMode
 }) => {
 	return (
-		<div className={styles.post}>
+		<div className={!darkMode ? styles.darkPost : styles.post}>
 			<img src={image_url} alt='' />
 			<a href={link}>
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
@@ -44,7 +46,9 @@ const Post: FC<PropsPost> = ({
 					<h5 key={index}>{word}</h5>
 				))}
 			</div>
-			<a  className={styles.buttonLink} target = "_blank"  href={link}><Button>Читать полностью</Button></a>
+			<a className={styles.buttonLink} target='_blank' href={link}>
+				<Button>Читать полностью</Button>
+			</a>
 		</div>
 	);
 };

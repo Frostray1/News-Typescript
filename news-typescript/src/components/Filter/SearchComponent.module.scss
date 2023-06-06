@@ -21,6 +21,15 @@ Button {
 	margin-left: 2%;
 }
 
+.darkSearchComponent{
+	@extend .SearchComponent;
+	background: rgb(24, 24, 24);
+	color: white;
+}
+
+
+
+
 @media (max-width: 768px) {
 	.SearchComponent {
         padding: 0.5em;

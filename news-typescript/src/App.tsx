@@ -27,10 +27,11 @@ interface SearchParams {
 	language: string;
 }
 interface AppProps {
-	menuCategory: SearchParams
+	menuCategory: SearchParams;
+	darkMode: boolean;
 }
 
-const App: FC<AppProps> = ({ menuCategory }) => {
+const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 	const [postList, setPostList] = useState<NewsItem[]>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [firstLoading, setFirstLoading] = useState<boolean>(true);
@@ -44,7 +45,7 @@ const App: FC<AppProps> = ({ menuCategory }) => {
 	useEffect(() => {
 		setFirstLoading(true);
 		console.log(menuCategory);
-		setSearchParams(menuCategory)
+		setSearchParams(menuCategory);
 	}, [menuCategory]);
 
 	useEffect(() => {
@@ -87,9 +88,10 @@ const App: FC<AppProps> = ({ menuCategory }) => {
 		}
 	};
 
+	
 	return (
 		<div className={styles.main}>
-			<SearchComponent onSearch={handleSearch} />
+			<SearchComponent onSearch={handleSearch} darkMode={darkMode} />
 			<div className={styles.posts}>
 				{firstLoading ? (
 					loading ? (
@@ -97,14 +99,14 @@ const App: FC<AppProps> = ({ menuCategory }) => {
 					) : (
 						<>
 							{postList.map((post, index) => (
-								<Post key={index} {...post} />
+								<Post key={index} {...post} darkMode={darkMode}/>
 							))}
 						</>
 					)
 				) : (
 					<>
 						{postList.map((post, index) => (
-							<Post key={index} {...post} />
+							<Post key={index} {...post} darkMode={darkMode} />
 						))}
 						{loading && (
 							<Spin className={styles.loader} size='large' />
