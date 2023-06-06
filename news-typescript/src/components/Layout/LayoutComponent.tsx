@@ -45,7 +45,6 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 
 	const changeTheme = () => {
 		setDarkMode(!darkMode);
-		darkMode ? console.log('Ночной режим') : console.log('Дневной режим');
 	};
 
 	return (

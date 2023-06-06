@@ -1,7 +1,6 @@
 .menu {
 	height: 100vh;
 	background: red;
-    
 }
 
 .menuList {
@@ -20,8 +19,6 @@
 	background: rgb(24, 24, 24);
 }
 
-
-
 .darkMode {
 	display: flex;
 	width: 40px;
@@ -39,4 +36,19 @@
 
 .layout {
 	background: rgb(63, 67, 70);
+}
+
+@media (max-width: 1055px) {
+	.container {
+		width: 85%;
+	}
+	.darkMode {
+		bottom: 20px;
+		left: -20px;
+	}
+}
+@media (max-width: 850px) {
+	.container {
+		width: 90%;
+	}
 }

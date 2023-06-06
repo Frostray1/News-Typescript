@@ -28,7 +28,6 @@ export const fetchData = async ({
 				...(page && { page })
 			}
 		});
-        console.log(response)
 		return response.data;
 	} catch (error) {
 		console.error(error);

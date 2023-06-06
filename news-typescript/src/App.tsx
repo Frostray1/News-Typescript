@@ -44,7 +44,6 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 	});
 	useEffect(() => {
 		setFirstLoading(true);
-		console.log(menuCategory);
 		setSearchParams(menuCategory);
 	}, [menuCategory]);
 
