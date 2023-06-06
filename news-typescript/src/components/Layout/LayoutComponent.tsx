@@ -1,13 +1,6 @@
-import React, { ReactNode, useState } from 'react';
-import {
-	MenuFoldOutlined,
-	MenuUnfoldOutlined,
-	PicLeftOutlined,
-	UploadOutlined,
-	UserOutlined,
-	VideoCameraOutlined
-} from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
+import { useState } from 'react';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { Layout, Menu, Button } from 'antd';
 import styles from './LayoutComponent.module.scss';
 import App from '../../App';
 import { GiSportMedal } from 'react-icons/gi';
@@ -19,9 +12,6 @@ import {
 } from 'react-icons/md';
 
 const { Sider } = Layout;
-interface LayoutComponentProps {
-	children: ReactNode;
-}
 
 interface category {
 	country: string;
@@ -29,7 +19,7 @@ interface category {
 	language: string;
 }
 
-const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
+const LayoutComponent = () => {
 	const [collapsed, setCollapsed] = useState(true);
 	const [darkMode, setDarkMode] = useState(true);
 
@@ -48,7 +38,7 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 	};
 
 	return (
-		<Layout >
+		<Layout>
 			<Sider
 				trigger={null}
 				collapsible
@@ -56,9 +46,11 @@ const LayoutComponent: React.FC<LayoutComponentProps> = ({ children }) => {
 				className={styles.menu}
 			>
 				<Menu
-					className={!darkMode ? styles.darkMenuList : styles.menuList}
+					className={
+						!darkMode ? styles.darkMenuList : styles.menuList
+					}
 					mode='inline'
-					theme={`${!darkMode ? 'dark' :"light"}`}
+					theme={`${!darkMode ? 'dark' : 'light'}`}
 					defaultSelectedKeys={['0']}
 					items={[
 						{
