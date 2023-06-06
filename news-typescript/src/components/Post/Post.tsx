@@ -20,7 +20,6 @@ interface PropsPost {
 }
 
 const Post: FC<PropsPost> = ({
-	category,
 	pubDate,
 	image_url,
 	content,

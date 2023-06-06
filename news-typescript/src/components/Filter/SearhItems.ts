@@ -1,4 +1,3 @@
-import { MenuProps } from 'antd';
 
 export const items = [
 	{
