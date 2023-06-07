@@ -22,12 +22,14 @@ interface NewsItem {
 }
 
 interface SearchParams {
+	q: string;
 	country: string;
 	category: string;
 	language: string;
 }
+
 interface AppProps {
-	menuCategory: SearchParams;
+	menuCategory: string;
 	darkMode: boolean;
 }
 
@@ -35,36 +37,51 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 	const [postList, setPostList] = useState<NewsItem[]>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [firstLoading, setFirstLoading] = useState<boolean>(true);
-
 	const [nextPageLink, setNextPageLink] = useState<string>('');
+	const [activeCategory, setActiveCategory] = useState<string>('');
+
 	const [searchParams, setSearchParams] = useState<SearchParams>({
+		q: '',
 		country: '',
 		category: '',
 		language: 'ru'
 	});
+	const fetchDataAndHandleResponse = async (menuCategory: string) => {
+		try {
+			setLoading(true);
+			const updatedSearchParams: SearchParams = {
+				...searchParams,
+				category: menuCategory
+			};
+			// setSearchParams(updatedSearchParams);
+			console.log(searchParams);
+
+			const data = await fetchData(updatedSearchParams);
+			setPostList(data.results);
+			setNextPageLink(data.nextPage);
+			setFirstLoading(false);
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		} finally {
+			setLoading(false);
+		}
+	};
+
 	useEffect(() => {
 		setFirstLoading(true);
-		setSearchParams(menuCategory);
-	}, [menuCategory]);
+		fetchDataAndHandleResponse(menuCategory);
+	}, [menuCategory,searchParams]);
 
-	useEffect(() => {
-		setLoading(true);
-
-		fetchData({ ...searchParams })
-			.then(data => {
-				setPostList(data.results);
-				setNextPageLink(data.nextPage);
-				setFirstLoading(false);
-			})
-			.catch(error => console.error('Error fetching data:', error))
-			.finally(() => setLoading(false));
-	}, [searchParams]);
 
 	const handleSearch = async (selectedValues: SearchParams) => {
 		try {
 			setFirstLoading(true);
 			setLoading(true);
-			setSearchParams(selectedValues);
+			const updatedSearchParams: SearchParams = {
+				...selectedValues,
+				category: menuCategory
+			};
+			setSearchParams(updatedSearchParams);
 		} catch (error) {
 			console.error('Error fetching data:', error);
 			setLoading(false);
@@ -87,7 +104,6 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 		}
 	};
 
-	
 	return (
 		<div className={styles.main}>
 			<SearchComponent onSearch={handleSearch} darkMode={darkMode} />
@@ -98,7 +114,11 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 					) : (
 						<>
 							{postList.map((post, index) => (
-								<Post key={index} {...post} darkMode={darkMode}/>
+								<Post
+									key={index}
+									{...post}
+									darkMode={darkMode}
+								/>
 							))}
 						</>
 					)

@@ -82,13 +82,13 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 							handleDropdownChange('country', value)
 						}
 					/>
-					<DropdownComponent
+					{/* <DropdownComponent
 						type='Category'
 						items={category}
 						onChange={value =>
 							handleDropdownChange('category', value)
 						}
-					/>
+					/> */}
 					<DropdownComponent
 						type='Language'
 						items={lang}

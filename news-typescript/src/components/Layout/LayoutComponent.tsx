@@ -4,34 +4,38 @@ import { Layout, Menu, Button } from 'antd';
 import styles from './LayoutComponent.module.scss';
 import App from '../../App';
 import { GiSportMedal } from 'react-icons/gi';
+import { GrTechnology } from 'react-icons/gr';
 import { BsNewspaper } from 'react-icons/bs';
+import { BiWorld } from 'react-icons/bi';
+
+
+
 import {
 	MdOutlineFastfood,
 	MdDarkMode,
-	MdOutlineDarkMode
+	MdOutlineDarkMode,
+	MdBusiness,
+	MdForest,
+	MdOutlineHealthAndSafety,
+	MdOutlineLocalPolice,
+	MdOutlineScience
 } from 'react-icons/md';
+import { TbBrandFunimation } from 'react-icons/tb';
+
+
+
 
 const { Sider } = Layout;
-
-interface category {
-	country: string;
-	category: string;
-	language: string;
-}
 
 const LayoutComponent = () => {
 	const [collapsed, setCollapsed] = useState(true);
 	const [darkMode, setDarkMode] = useState(true);
 
-	const [menuCategory, setMenuCategory] = useState<category>({
-		country: '',
-		category: '',
-		language: ''
-	});
+	const [menuCategory, setMenuCategory] = useState<string>('');
 
-	const handleMenuClick = (key: string) => {
-		setMenuCategory({ country: '', category: key, language: '' });
-	};
+	// const handleMenuClick = (key: string) => {
+	// 	setMenuCategory({ country: '', category: key, language: '' });
+	// };
 
 	const changeTheme = () => {
 		setDarkMode(!darkMode);
@@ -66,21 +70,70 @@ const LayoutComponent = () => {
 						{
 							key: '1',
 							icon: <BsNewspaper />,
-							label: 'Top News',
-							onClick: () => handleMenuClick('Top')
+							label: 'Top',
+							onClick: () => setMenuCategory('Top')
 						},
 						{
 							key: '2',
 							icon: <GiSportMedal />,
-							label: 'Sport News',
-							onClick: () => handleMenuClick('Sports')
+							label: 'Sport',
+							onClick: () => setMenuCategory('Sports')
 						},
 						{
 							key: '3',
 							icon: <MdOutlineFastfood />,
-							label: 'Food News',
-							onClick: () => handleMenuClick('Food')
-						}
+							label: 'Food',
+							onClick: () => setMenuCategory('Food')
+						},
+						{
+							key: '4',
+							icon: <MdBusiness />,
+							label: 'Business',
+							onClick: () => setMenuCategory('Business')
+						},
+						{
+							key: '5',
+							icon: <TbBrandFunimation />,
+							label: 'Entertainment',
+							onClick: () => setMenuCategory('Entertainment')
+						},
+						{
+							key: '6',
+							icon: <MdForest />,
+							label: 'Environment',
+							onClick: () => setMenuCategory('Environment')
+						},
+						{
+							key: '7',
+							icon: <MdOutlineHealthAndSafety />,
+							label: 'Health',
+							onClick: () => setMenuCategory('Health')
+						},
+						{
+							key: '8',
+							icon: <MdOutlineLocalPolice />,
+							label: 'Politics',
+							onClick: () => setMenuCategory('Politics')
+						},
+						{
+							key: '9',
+							icon: <MdOutlineScience />,
+							label: 'Science',
+							onClick: () => setMenuCategory('Science')
+						},
+						{
+							key: '10',
+							icon: <GrTechnology />,
+							label: 'Technology',
+							onClick: () => setMenuCategory('Technology')
+						},
+						{
+							key: '11',
+							icon: <BiWorld />,
+							label: 'World',
+							onClick: () => setMenuCategory('World')
+						},
+						
 					]}
 				/>
 			</Sider>

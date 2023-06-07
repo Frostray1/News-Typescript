@@ -5,6 +5,6 @@ import LayoutComponent from './components/Layout/LayoutComponent.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<LayoutComponent></LayoutComponent>
+		<LayoutComponent />
 	</React.StrictMode>
 );
