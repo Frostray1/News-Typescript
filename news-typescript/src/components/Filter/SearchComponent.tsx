@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DropdownComponent from '../Dropdown/DropdownComponent';
-import { items, category, lang } from './SearhItems';
+import { items, lang } from './SearhItems';
 import { Button, Tooltip } from 'antd';
 import {
 	MenuFoldOutlined,

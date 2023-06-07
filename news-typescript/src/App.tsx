@@ -38,8 +38,6 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [firstLoading, setFirstLoading] = useState<boolean>(true);
 	const [nextPageLink, setNextPageLink] = useState<string>('');
-	const [activeCategory, setActiveCategory] = useState<string>('');
-
 	const [searchParams, setSearchParams] = useState<SearchParams>({
 		q: '',
 		country: '',
