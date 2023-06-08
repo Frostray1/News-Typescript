@@ -51,4 +51,15 @@
 	.container {
 		width: 90%;
 	}
+	.darkMode {
+		top: 10px;
+		left: -20px;
+	}
+}
+@media (max-width: 765px) {
+
+	.darkMode {
+		top: -23px;
+		left: -20px;
+	}
 }

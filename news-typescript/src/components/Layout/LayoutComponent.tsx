@@ -33,9 +33,6 @@ const LayoutComponent = () => {
 
 	const [menuCategory, setMenuCategory] = useState<string>('');
 
-	// const handleMenuClick = (key: string) => {
-	// 	setMenuCategory({ country: '', category: key, language: '' });
-	// };
 
 	const changeTheme = () => {
 		setDarkMode(!darkMode);

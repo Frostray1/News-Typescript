@@ -4,6 +4,7 @@ import Post from './components/Post/Post';
 import { fetchData } from './api/api';
 import styles from './App.module.scss';
 import { Button, Spin } from 'antd';
+import NotNews from './components/NotNews/NotNews';
 
 interface NewsItem {
 	category: string[];
@@ -51,10 +52,9 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 				...searchParams,
 				category: menuCategory
 			};
-			// setSearchParams(updatedSearchParams);
-			console.log(searchParams);
 
 			const data = await fetchData(updatedSearchParams);
+
 			setPostList(data.results);
 			setNextPageLink(data.nextPage);
 			setFirstLoading(false);
@@ -68,8 +68,7 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 	useEffect(() => {
 		setFirstLoading(true);
 		fetchDataAndHandleResponse(menuCategory);
-	}, [menuCategory,searchParams]);
-
+	}, [menuCategory, searchParams]);
 
 	const handleSearch = async (selectedValues: SearchParams) => {
 		try {
@@ -101,7 +100,6 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 			setLoading(false);
 		}
 	};
-
 	return (
 		<div className={styles.main}>
 			<SearchComponent onSearch={handleSearch} darkMode={darkMode} />
@@ -111,20 +109,32 @@ const App: FC<AppProps> = ({ menuCategory, darkMode }) => {
 						<Spin className={styles.loader} size='large' />
 					) : (
 						<>
-							{postList.map((post, index) => (
+							{postList.length === 0 ? (
+								<NotNews />
+							) : (
+								postList.map((post, index) => (
+									<Post
+										key={index}
+										{...post}
+										darkMode={darkMode}
+									/>
+								))
+							)}
+						</>
+					)
+				) : (
+					<>
+						{postList.length === 0 ? (
+							<NotNews />
+						) : (
+							postList.map((post, index) => (
 								<Post
 									key={index}
 									{...post}
 									darkMode={darkMode}
 								/>
-							))}
-						</>
-					)
-				) : (
-					<>
-						{postList.map((post, index) => (
-							<Post key={index} {...post} darkMode={darkMode} />
-						))}
+							))
+						)}
 						{loading && (
 							<Spin className={styles.loader} size='large' />
 						)}
